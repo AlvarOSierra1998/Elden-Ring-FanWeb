@@ -1,8 +1,7 @@
 
 <template>
     <nav class="lore">
-        <div>
-            
+        <div class="buttons-container">
             <img  src="../assets/goldenorderlogo.png" alt="golden-order-logo">
             <a href="#lore">
                 <button>
@@ -10,9 +9,15 @@
                 </button>
             </a>
 
-            <a href="#lore">
+            <a href="#boss">
                 <button>
                     <h2>New Boss</h2>
+                </button>
+            </a>
+
+            <a href="#gp">
+                <button>
+                    <h2>Gameplay</h2>
                 </button>
             </a>
 
@@ -73,5 +78,26 @@ import { ref } from 'vue'
     width: 20%;
     margin: auto;
 
+}
+a{
+    text-decoration: none;
+}
+.buttons-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10rem;
+}
+button{
+    background: none;
+    outline: none;
+    border: none;
+    color: #ffbf00;
+    cursor: pointer;
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: lighter;
+    font-style: normal;
+    
 }
 </style>
