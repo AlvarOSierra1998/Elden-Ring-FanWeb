@@ -2,14 +2,20 @@
 
 <header>
   <parallax />
-  
 </header>
+
+<main>
+  <section>
+    <lore />
+  </section>
+</main>
 
 </template>
 
 
 <script setup>
 import parallax from './components/parallax.vue'
+import lore from './components/Lore.vue'
 
 </script>
 
