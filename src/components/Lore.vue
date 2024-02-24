@@ -1,27 +1,15 @@
 
 <template>
     <nav class="lore">
-        <div class="buttons-container">
+        <div class="container">
             <img  src="../assets/goldenorderlogo.png" alt="golden-order-logo">
-            <a href="#lore">
-                <button>
-                    <h2>Lore</h2>
-                </button>
-            </a>
+            <div class="buttons-container">
+                <button><a href="#lore">Lore</a></button>
+                <button><a href="#characters">Characters</a></button>
+                <button><a href="#gameplay">Gameplay</a></button>
+                <button><a href="#gallery">Gallery</a></button>
 
-            <a href="#boss">
-                <button>
-                    <h2>New Boss</h2>
-                </button>
-            </a>
-
-            <a href="#gp">
-                <button>
-                    <h2>Gameplay</h2>
-                </button>
-            </a>
-
-
+            </div>
         </div>
     </nav>
 </template>
@@ -42,7 +30,7 @@ import { ref } from 'vue'
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    border-image: fill 0 linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    border-image: fill 0 linear-gradient(to top, rgba(0, 0, 0, 0.493), rgba(0, 0, 0, 0.5));
     transition: opacity 1s ease-in-out;
     position: relative;
 
@@ -81,8 +69,9 @@ import { ref } from 'vue'
 }
 a{
     text-decoration: none;
+    color: #ffbf00;
 }
-.buttons-container{
+.container{
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -98,6 +87,14 @@ button{
     font-optical-sizing: auto;
     font-weight: lighter;
     font-style: normal;
+    font-size: 0.70em;
+    
+}
+.buttons-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     
 }
 </style>
