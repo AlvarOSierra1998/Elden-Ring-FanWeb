@@ -30,8 +30,6 @@ function handleScroll() {
 <style scoped >
 
 
-
-
     .parallax div {
         padding: 5rem;
         text-align: center;
