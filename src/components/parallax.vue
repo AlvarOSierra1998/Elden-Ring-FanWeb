@@ -37,6 +37,7 @@ function handleScroll() {
         color: white;
         margin: auto;
         display: inline-flex;
+        overflow: hidden;
 
     }
 
@@ -47,6 +48,7 @@ function handleScroll() {
         justify-content: center;
         width: 50%;
         margin: auto;
+        
 
     }
 
