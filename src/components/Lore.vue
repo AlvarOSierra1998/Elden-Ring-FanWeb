@@ -1,11 +1,15 @@
-<template>
-    <nav class="lore">
-        <!----<img  src="../assets/goldenorderlogo.png" alt="golden-order-logo">--->
+
+    <!--ANTIGUO CODIGO-->
+    <!---<nav class="lore">
+        <!----<img  src="../assets/goldenorderlogo.png" alt="golden-order-logo">---
         <div class="container">
 
             <div class="buttons-container">
                 <div class="box-button box-button-lore">
-                    <button @click="mostrarLoreDesc"><a href="#lore">Lore</a></button>
+                    <button @click="mostrarLoreDesc"></button>
+                </div>
+                <div class="loreabsolute">
+                    <a href="#lore">Lore</a>
                 </div>
 
                 <div class="box-button box-button-npcs">
@@ -22,7 +26,7 @@
             </div>
         </div>
     </nav>
-    <!--LORE-->
+    <!--LORE--
     <section class="color">
         <div class="container-dsc" v-if="mostrarLore" :class="{ desc: mostrarLoreDesc }">
             <div class="desc">
@@ -58,9 +62,8 @@
 
 
         </div>
-    </section>
-
-    <!---PERSONAJES -->
+    </section>-->
+    <!---PERSONAJES --
     <div v-if="mostrarPersonajes" :class="{ desc: mostrarLorePersonajes }">
             <div>
                 <button> Dioses /</button>
@@ -69,7 +72,7 @@
             </div>
     </div>
 
-    <!---NPCS  -->
+    <!---NPCS  --
    
     <section class="color">
             <div>
@@ -111,46 +114,190 @@
         </section>
 
 
+    -->
 
+    <template>
+  <div id="app" class="wrapper" v-cloak :class="{'is-previous': isPreviousSlide, 'first-load': isFirstLoad}">
+    <div class="slide-wrapper" 
+         v-for="(slide, index) in slides" 
+         :class="{ active: index === currentSlide }"
+         :style="{ 'z-index': (slides.length - index), 'background-image': 'url(' + slide.bgImg + ')' }">
+      <div class="slide-inner">
+        <div class="slide-bg-text">
+          <p>{{ slide.headlineFirstLine }}</p>
+          <p>{{ slide.headlineSecondLine }}</p>
+        </div>
+        <div class="slide-rect-filter">
+          <div class="slide-rect" :style="{'border-image-source': 'url(' + slide.rectImg + ')'}"></div>
+        </div>
+        <div class="slide-content">
+          <h1 class="slide-content-text">
+            <p>{{ slide.headlineFirstLine }}</p>
+            <p>{{ slide.headlineSecondLine }}</p>
+          </h1>
+          <!--CALL TO ACTION-->
+          <a href="lore" @click.prevent="toogle()" class="slide-content-cta">Mostrar</a> 
+        </div>
+        <!--modal-->
+              <Modal :show="mostrar" @close="toogle" :class="{ desc: mostrar }"  >
+                  <bl>
+                    <img src="../assets/ER_icon_Book_Golden_Order_Principia.webp" class="book animate__animated animate__fadeInLeft" alt="Golden Order Principia">
+                      <p id="lore">
+                          {{ description }}
+                        </p>
+                    </bl> 
+                </Modal>
 
+        <h2 class="slide-side-text">
+          <span>{{ slide.sublineFirstLine }} / </span>
+          <span>{{ slide.sublineSecondLine }}</span>
+        </h2>
+      </div>
+    </div>
+    <div class="controls-container">
+      <button class="controls-button" 
+              v-for="(slide, index) in slides"
+              :class="{ active: index === currentSlide }"
+              @click="updateSlide(index)">
+        {{ slide.headlineFirstLine }} {{ slide.headlineSecondLine }}
+      </button>
+    </div>
+    <div class="pagination-container">
+      <span class="pagination-item"
+            v-for="(slide, index) in slides"
+            :class="{ active: index === currentSlide }"
+            @click="updateSlide(index)">
+      </span>
+    </div>
+  </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import Modal from './Modal.vue';
 
+const currentSlide = ref(0);
+const isPreviousSlide = ref(false);
+const isFirstLoad = ref(true);
+const slides = ref([
+  {
+    headlineFirstLine: "",
+    headlineSecondLine: "Las Tierras de las sombras",
+    sublineFirstLine: "Shadows of the erdtree",
+    sublineSecondLine: "lore",
+    bgImg: "https://images2.alphacoders.com/136/1363595.jpeg",
+    rectImg: "https://images6.alphacoders.com/136/1366850.jpeg"
+  },
+  {
+    headlineFirstLine: "Nulla",
+    headlineSecondLine: "Auctor",
+    sublineFirstLine: "Il n'y a rien de neuf sous",
+    sublineSecondLine: "le soleil",
+    bgImg: "https://i.postimg.cc/Qx34VNXM/slide1.jpg",
+    rectImg: "https://i.postimg.cc/ryWZ8R2b/slide-rect1.jpg"
+  },
+  {
+    headlineFirstLine: "Nullam",
+    headlineSecondLine: "Ultricies",
+    sublineFirstLine: "Τίποτα καινούργιο κάτω από",
+    sublineSecondLine: "τον ήλιο",
+    bgImg: "https://i.postimg.cc/t4RBtrnQ/slide2.jpg",
+    rectImg: "https://i.postimg.cc/3JFLGMRF/slide-rect2.jpg"
+  }
+]);
 
-//Mostrar Lore
-const mostrarLore = ref(false);
-const mostrarLoreDesc = () => {
-    mostrarLore.value = !mostrarLore.value;
+const updateSlide = (index) => {
+  isPreviousSlide.value = index < currentSlide.value;
+  currentSlide.value = index;
+  isFirstLoad.value = false;
+};
 
+onMounted(() => {
+  const productRotatorSlide = document.getElementById("app");
+  let startX = 0;
+  let endX = 0;
+
+  productRotatorSlide.addEventListener("touchstart", (event) => startX = event.touches[0].pageX);
+
+  productRotatorSlide.addEventListener("touchmove", (event) => endX = event.touches[0].pageX);
+
+  productRotatorSlide.addEventListener("touchend", () => {
+    const threshold = startX - endX;
+
+    if (threshold < 150 && currentSlide.value > 0) {
+      currentSlide.value--;
+    }
+    if (threshold > -150 && currentSlide.value < slides.value.length - 1) {
+      currentSlide.value++;
+    }
+  });
+});
+
+const description = `L a Historia de Shadows of the erdtree va más allá de las Tierras Intermedias, esta nueva
+                    aventura tiene lugar en el Reino de las sombras, donde el Empíreo Miquella se encuentra.
+                    Tras nuestra lucha frente al Señor de la Sangre Mohg y
+                    habiendo derrotado tambien al semidios Radhan Azote de las estrellas. Debemos
+                    acudir al Panteon dinástico
+                    donde la crisálida de un dios dormido se encuentra.
+                    Allí nos encontraremos con la  Caballera de la aguja Leda, quien nos dará la
+                    bienvenida a este nuevo mundo, El Reino de las Sombras.
+                    Tras hablar con Leda nos explica que ella también fue guiada por la fe al igual que sus compatriotas
+                    quienes han acudido a la llamada de Miquella el Cortés, Leda nos señala a la crisalida del empiero
+                    para asi poder transportarnos a las tierras sombrías.
+                    Una vez en el reino de las sombras, nos encontramos con un mundo oscuro y desolado, donde la luz no
+                    existe y la oscuridad reina, en este mundo nos encontramos con seres de pesadilla y criaturas que no
+                    pertenecen a este mundo.`;
+                  
+const mostrar = ref(false);
+const toogle = () => {
+    mostrar.value = !mostrar.value;
 }
+// Mostrar Lore
+// const mostrarLore = ref(false);
+// const mostrarLoreDesc = () => {
+//     mostrarLore.value = !mostrarLore.value;
 
-//Mostrar Lore Personajes botones
-const mostrarPersonajes = ref(false);
-const mostrarLorePersonajes = () => {
-    mostrarPersonajes.value = !mostrarPersonajes.value;
-}
+// }
 
-
-const semidioses = ref(false);
-const mostrarDescSemidioses = () => {
-    semidioses.value = !semidioses.value;
-}
-
-
+// //Mostrar Lore Personajes botones
+// const mostrarPersonajes = ref(false);
+// const mostrarLorePersonajes = () => {
+//     mostrarPersonajes.value = !mostrarPersonajes.value;
+// }
 
 
-
-
-
+// const semidioses = ref(false);
+// const mostrarDescSemidioses = () => {
+//     semidioses.value = !semidioses.value;
+// }
 
 </script>
 
+
+
 <style scoped>
 @import url("./StyleComponents/loreDesc.css");
+.book{
+    width: 300px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: auto;
+}
 
-/***GENERAL BOX */
+
+/*estilos antiguos
+.loreabsolute{
+    position: absolute;
+    z-index: 999999999999999;
+    left: 0;
+    float: left;
+    width: 31% !important;
+    font-size: 3em !important;
+    font-weight: 300;
+}
+
+/***GENERAL BOX *
 
 .btn-semi{
 
@@ -184,13 +331,13 @@ const mostrarDescSemidioses = () => {
 
 }
 
-/************ */
+/************ *
 
 .box-button-lore {
     background-image: url("../assets/fondo-mobil1.webp");
     background-size: cover;
     background-repeat: no-repeat;
-    border-image: fill 0 linear-gradient(to top, rgba(0, 0, 0, 0.493), rgba(0, 0, 0, 0.5));
+    /* border-image: fill 0 linear-gradient(to top, rgba(0, 0, 0, 0.493), rgba(0, 0, 0, 0.5)); *
     transition: opacity 1s ease-in-out;
     position: relative;
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
@@ -210,7 +357,7 @@ const mostrarDescSemidioses = () => {
     background-image: url("../assets/leda.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
-    border-image: fill 0 linear-gradient(to top, rgba(0, 0, 0, 0.493), rgba(0, 0, 0, 0.5));
+    /* border-image: fill 0 linear-gradient(to top, rgba(0, 0, 0, 0.493), rgba(0, 0, 0, 0.5)); *
     transition: opacity 1s ease-in-out;
     position: relative;
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
@@ -225,7 +372,7 @@ const mostrarDescSemidioses = () => {
     background-image: url("../assets/trailer.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    border-image: fill 0 linear-gradient(to top, rgba(0, 0, 0, 0.493), rgba(0, 0, 0, 0.5));
+    /* border-image: fill 0 linear-gradient(to top, rgba(0, 0, 0, 0.493), rgba(0, 0, 0, 0.5)); *
     transition: opacity 1s ease-in-out;
     position: relative;
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
@@ -240,7 +387,7 @@ const mostrarDescSemidioses = () => {
     background-image: url("../assets/wallpaper.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
-    border-image: fill 0 linear-gradient(to top, rgba(0, 0, 0, 0.493), rgba(0, 0, 0, 0.5));
+    /*border-image: fill 0 linear-gradient(to top, rgba(0, 0, 0, 0.493), rgba(0, 0, 0, 0.5));*
     transition: opacity 1s ease-in-out;
     position: relative;
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
@@ -267,11 +414,11 @@ const mostrarDescSemidioses = () => {
 
 .container-dsc {
     display: inline-flex;
-    /*margin: auto;*/
-}
+    /*margin: auto;
+}*/
 
 .desc {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-family: 'Roboto', sans-serif;
     color: #f5f5f5;
     margin: auto;
@@ -279,17 +426,20 @@ const mostrarDescSemidioses = () => {
     text-align: justify;
     text-justify: inter-word;
     line-height: 1.5;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    width: 92%;
+    
+    
+    width: 100%;
     /*REVISAR*/
     display: inline-flex;
     justify-content: space-evenly;
+    background-image: url("../assets/wallpaper.jpeg");
+    border-image: fill 0 linear-gradient(to top, rgba(0, 0, 0, 0.493), rgba(0, 0, 0, 0.5));
+    background-size: cover;
 
 
 
 }
-
+/*
 
 .lore {
     margin: 5%;
@@ -325,7 +475,7 @@ const mostrarDescSemidioses = () => {
     right: 0;
     top: 0;
     height: 50px;
-    /* Ajusta esto para cambiar la altura del difuminado */
+   
     background: linear-gradient(to bottom, black, transparent);
 }
 
@@ -336,7 +486,7 @@ const mostrarDescSemidioses = () => {
     right: 0;
     bottom: 0;
     height: 50px;
-    /* Ajusta esto para cambiar la altura del difuminado */
+   
     background: linear-gradient(to top, black, transparent);
 
 }
@@ -349,6 +499,9 @@ const mostrarDescSemidioses = () => {
     color: white;
     margin: auto;
     display: flex;
+    border-radius: 50%;
+    width: 90%;
+    justify-content: center;
 
 }
 
@@ -376,13 +529,13 @@ a {
     padding-bottom: 0 !important;
 }
 
-button {
+ button {
     background: none;
     outline: none;
     border: none;
     color: #ffbf00;
     cursor: pointer;
-    /*font-family: "Quicksand", sans-serif;*/
+    /*font-family: "Quicksand", sans-serif;*
     font-family: 'elden';
     font-optical-sizing: auto;
     font-weight: lighter;
@@ -391,7 +544,7 @@ button {
     letter-spacing: 0.3cap;
 
 
-}
+} 
 
 a:hover {
     text-shadow: 0 0 30px #ebc20b;
@@ -401,11 +554,11 @@ a:hover {
 }
 
 .buttons-container {
-    display: flex;
+    display: flex !important;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    margin: auto;
+    width: 97% !important;
+    margin: auto !important;
 
-}
+}*/
 </style>

@@ -3,6 +3,7 @@
         <div>
             <img src="../assets/elden-ring-shadow-of-the-erdtree-logo.png" alt="logo-elden">
         </div>
+        
     </div>
 </template>
 
