@@ -176,6 +176,10 @@
 import { ref, onMounted } from 'vue';
 import Modal from './Modal.vue';
 
+const mostrar = ref(false);
+const toogle = () => {
+    mostrar.value = !mostrar.value;
+}
 const currentSlide = ref(0);
 const isPreviousSlide = ref(false);
 const isFirstLoad = ref(true);
@@ -212,7 +216,22 @@ const updateSlide = (index) => {
   isFirstLoad.value = false;
 };
 
+const fetchSlides = async () => {
+        try {
+          const response = await fetch('/data.json');
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const data = await response.json();
+          slides.value = data;
+        } catch (error) {
+          console.error('Error fetching slides:', error);
+        }
+      };
+      
+
 onMounted(() => {
+    //fetchSlides()
   const productRotatorSlide = document.getElementById("app");
   let startX = 0;
   let endX = 0;
@@ -248,10 +267,7 @@ const description = `L a Historia de Shadows of the erdtree va más allá de las
                     existe y la oscuridad reina, en este mundo nos encontramos con seres de pesadilla y criaturas que no
                     pertenecen a este mundo.`;
                   
-const mostrar = ref(false);
-const toogle = () => {
-    mostrar.value = !mostrar.value;
-}
+
 // Mostrar Lore
 // const mostrarLore = ref(false);
 // const mostrarLoreDesc = () => {
