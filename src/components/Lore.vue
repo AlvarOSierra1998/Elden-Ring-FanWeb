@@ -140,12 +140,19 @@
         </div>
         <!--modal-->
               <Modal :show="mostrar" @close="toogle" :class="{ desc: mostrar }"  >
-                  <bl>
-                    <img src="../assets/ER_icon_Book_Golden_Order_Principia.webp" class="book animate__animated animate__fadeInLeft" alt="Golden Order Principia">
-                      <p id="lore">
-                          {{ description }}
+              
+                <div class="bloque">
+                  
+                   <img @click="toggledesc"  src="../assets/ER_icon_Book_Golden_Order_Principia.webp" class="book animate__animated animate__fadeInLeft" alt="Golden Order Principia">
+                      <div v-if="mostrardesc">
+                        <p id="lore" v-if="slides.length > 0" >
+                          <span class="txt-lore">{{ slides[currentSlide].description }}</span>
                         </p>
-                    </bl> 
+                      </div>
+                    
+                </div>
+               
+                 
                 </Modal>
 
         <h2 class="slide-side-text">
@@ -183,55 +190,25 @@ const toogle = () => {
 const currentSlide = ref(0);
 const isPreviousSlide = ref(false);
 const isFirstLoad = ref(true);
-const slides = ref([
-  {
-    headlineFirstLine: "",
-    headlineSecondLine: "Las Tierras de las sombras",
-    sublineFirstLine: "Shadows of the erdtree",
-    sublineSecondLine: "lore",
-    bgImg: "https://images2.alphacoders.com/136/1363595.jpeg",
-    rectImg: "https://images6.alphacoders.com/136/1366850.jpeg"
-  },
-  {
-    headlineFirstLine: "Nulla",
-    headlineSecondLine: "Auctor",
-    sublineFirstLine: "Il n'y a rien de neuf sous",
-    sublineSecondLine: "le soleil",
-    bgImg: "https://i.postimg.cc/Qx34VNXM/slide1.jpg",
-    rectImg: "https://i.postimg.cc/ryWZ8R2b/slide-rect1.jpg"
-  },
-  {
-    headlineFirstLine: "Nullam",
-    headlineSecondLine: "Ultricies",
-    sublineFirstLine: "Τίποτα καινούργιο κάτω από",
-    sublineSecondLine: "τον ήλιο",
-    bgImg: "https://i.postimg.cc/t4RBtrnQ/slide2.jpg",
-    rectImg: "https://i.postimg.cc/3JFLGMRF/slide-rect2.jpg"
-  }
-]);
+const slides = ref([]);
 
+const mostrardesc = ref(false);
+// const book = ref(true);
+const toggledesc = () =>{
+  mostrardesc.value = !mostrardesc.value;
+  
+}
+
+//funciones que controla los slides
 const updateSlide = (index) => {
   isPreviousSlide.value = index < currentSlide.value;
   currentSlide.value = index;
   isFirstLoad.value = false;
+  mostrar.value= false; //cerrar modal cuando hago click en otro slide
 };
 
-const fetchSlides = async () => {
-        try {
-          const response = await fetch('/data.json');
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          const data = await response.json();
-          slides.value = data;
-        } catch (error) {
-          console.error('Error fetching slides:', error);
-        }
-      };
-      
-
 onMounted(() => {
-    //fetchSlides()
+    fetchSlides()
   const productRotatorSlide = document.getElementById("app");
   let startX = 0;
   let endX = 0;
@@ -252,40 +229,79 @@ onMounted(() => {
   });
 });
 
-const description = `L a Historia de Shadows of the erdtree va más allá de las Tierras Intermedias, esta nueva
-                    aventura tiene lugar en el Reino de las sombras, donde el Empíreo Miquella se encuentra.
-                    Tras nuestra lucha frente al Señor de la Sangre Mohg y
-                    habiendo derrotado tambien al semidios Radhan Azote de las estrellas. Debemos
-                    acudir al Panteon dinástico
-                    donde la crisálida de un dios dormido se encuentra.
-                    Allí nos encontraremos con la  Caballera de la aguja Leda, quien nos dará la
-                    bienvenida a este nuevo mundo, El Reino de las Sombras.
-                    Tras hablar con Leda nos explica que ella también fue guiada por la fe al igual que sus compatriotas
-                    quienes han acudido a la llamada de Miquella el Cortés, Leda nos señala a la crisalida del empiero
-                    para asi poder transportarnos a las tierras sombrías.
-                    Una vez en el reino de las sombras, nos encontramos con un mundo oscuro y desolado, donde la luz no
-                    existe y la oscuridad reina, en este mundo nos encontramos con seres de pesadilla y criaturas que no
-                    pertenecen a este mundo.`;
+//Peticiones JSON
+const fetchSlides = async () => {
+  try {
+    const response = await fetch('/data.json');
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    slides.value = data;
+  } catch (error) {
+    console.error('Error fetching slides:', error);
+  }
+};
+
+
+/**EXPLICACION DE COMO SACO LA INFO MEDIANTE JSON
+ * 
+ * 
+ * Claro, te explico el fragmento de código que has seleccionado:
+
+### Fragmento de código
+```vue
+<bl>
+  <img src="../assets/ER_icon_Book_Golden_Order_Principia.webp" class="book animate__animated animate__fadeInLeft" alt="Golden Order Principia">
+  <p id="lore" v-if="slides.length > 0" class="txt">
+    {{ slides[currentSlide].description }}
+  </p>
+</bl>
+```
+
+### Explicación
+
+1. **Etiqueta `<bl>`**:
+   - La etiqueta `<bl>` no es una etiqueta HTML estándar. Es posible que sea un error tipográfico o una etiqueta personalizada que no se ha definido en el contexto del componente. Deberías cambiarla a una etiqueta HTML válida como `<div>` o `<section>`.
+
+2. **Etiqueta `<img>`**:
+   - `src="../assets/ER_icon_Book_Golden_Order_Principia.webp"`: Especifica la ruta de la imagen que se va a mostrar.
+   - `class="book animate__animated animate__fadeInLeft"`: Aplica las clases CSS [`book`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FC%3A%2FUsers%2Falvar%2FOneDrive%2FEscritorio%2FEldenRing%20Web%2Feldenringweb%2Fsrc%2Fcomponents%2FLore.vue%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A143%2C%22character%22%3A89%7D%7D%5D%2C%22234ab3f2-e8c7-4bb1-8b60-977f07ea121e%22%5D "Go to definition"), [`animate__animated`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FC%3A%2FUsers%2Falvar%2FOneDrive%2FEscritorio%2FEldenRing%20Web%2Feldenringweb%2Fsrc%2Fcomponents%2FLore.vue%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A143%2C%22character%22%3A94%7D%7D%5D%2C%22234ab3f2-e8c7-4bb1-8b60-977f07ea121e%22%5D "Go to definition"), y [`animate__fadeInLeft`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FC%3A%2FUsers%2Falvar%2FOneDrive%2FEscritorio%2FEldenRing%20Web%2Feldenringweb%2Fsrc%2Fcomponents%2FLore.vue%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A143%2C%22character%22%3A112%7D%7D%5D%2C%22234ab3f2-e8c7-4bb1-8b60-977f07ea121e%22%5D "Go to definition") a la imagen. Estas clases pueden estar definiendo estilos y animaciones para la imagen.
+   - `alt="Golden Order Principia"`: Proporciona un texto alternativo para la imagen, útil para accesibilidad y en caso de que la imagen no se cargue.
+
+3. **Etiqueta `<p>`**:
+   - `id="lore"`: Asigna un identificador único al párrafo.
+   - `v-if="slides.length > 0"`: Directiva de Vue que renderiza el párrafo solo si la longitud del array [`slides`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FC%3A%2FUsers%2Falvar%2FOneDrive%2FEscritorio%2FEldenRing%20Web%2Feldenringweb%2Fsrc%2Fcomponents%2FLore.vue%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A144%2C%22character%22%3A41%7D%7D%5D%2C%22234ab3f2-e8c7-4bb1-8b60-977f07ea121e%22%5D "Go to definition") es mayor que 0. Esto asegura que el párrafo solo se muestre si hay datos en [`slides`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FC%3A%2FUsers%2Falvar%2FOneDrive%2FEscritorio%2FEldenRing%20Web%2Feldenringweb%2Fsrc%2Fcomponents%2FLore.vue%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A144%2C%22character%22%3A41%7D%7D%5D%2C%22234ab3f2-e8c7-4bb1-8b60-977f07ea121e%22%5D "Go to definition").
+   - `class="txt"`: Aplica la clase CSS [`txt`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FC%3A%2FUsers%2Falvar%2FOneDrive%2FEscritorio%2FEldenRing%20Web%2Feldenringweb%2Fsrc%2Fcomponents%2FLore.vue%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A144%2C%22character%22%3A67%7D%7D%5D%2C%22234ab3f2-e8c7-4bb1-8b60-977f07ea121e%22%5D "Go to definition") al párrafo.
+   - `{{ slides[currentSlide].description }}`: Interpolación de Vue que muestra la propiedad [`description`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FC%3A%2FUsers%2Falvar%2FOneDrive%2FEscritorio%2FEldenRing%20Web%2Feldenringweb%2Fsrc%2Fcomponents%2FLore.vue%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A145%2C%22character%22%3A50%7D%7D%5D%2C%22234ab3f2-e8c7-4bb1-8b60-977f07ea121e%22%5D "Go to definition") del objeto `slides[currentSlide]`. [`currentSlide`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FC%3A%2FUsers%2Falvar%2FOneDrive%2FEscritorio%2FEldenRing%20Web%2Feldenringweb%2Fsrc%2Fcomponents%2FLore.vue%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A145%2C%22character%22%3A36%7D%7D%5D%2C%22234ab3f2-e8c7-4bb1-8b60-977f07ea121e%22%5D "Go to definition") es un índice que apunta al slide actual en el array [`slides`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FC%3A%2FUsers%2Falvar%2FOneDrive%2FEscritorio%2FEldenRing%20Web%2Feldenringweb%2Fsrc%2Fcomponents%2FLore.vue%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A144%2C%22character%22%3A41%7D%7D%5D%2C%22234ab3f2-e8c7-4bb1-8b60-977f07ea121e%22%5D "Go to definition").
+
+### Posible corrección
+
+Si `<bl>` es un error tipográfico, puedes corregirlo usando una etiqueta HTML válida como `<div>`:
+
+```vue
+<div>
+  <img src="../assets/ER_icon_Book_Golden_Order_Principia.webp" class="book animate__animated animate__fadeInLeft" alt="Golden Order Principia">
+  <p id="lore" v-if="slides.length > 0" class="txt">
+    {{ slides[currentSlide].description }}
+  </p>
+</div>
+```
+
+### Explicación adicional
+
+- **Directiva [`v-if`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FC%3A%2FUsers%2Falvar%2FOneDrive%2FEscritorio%2FEldenRing%20Web%2Feldenringweb%2Fsrc%2Fcomponents%2FLore.vue%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A144%2C%22character%22%3A35%7D%7D%5D%2C%22234ab3f2-e8c7-4bb1-8b60-977f07ea121e%22%5D "Go to definition")**: La directiva [`v-if`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FC%3A%2FUsers%2Falvar%2FOneDrive%2FEscritorio%2FEldenRing%20Web%2Feldenringweb%2Fsrc%2Fcomponents%2FLore.vue%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A144%2C%22character%22%3A35%7D%7D%5D%2C%22234ab3f2-e8c7-4bb1-8b60-977f07ea121e%22%5D "Go to definition") es una forma de condicional en Vue.js que renderiza el elemento solo si la condición es verdadera. En este caso, el párrafo solo se renderiza si `slides.length > 0`, lo que significa que hay al menos un slide en el array [`slides`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FC%3A%2FUsers%2Falvar%2FOneDrive%2FEscritorio%2FEldenRing%20Web%2Feldenringweb%2Fsrc%2Fcomponents%2FLore.vue%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A144%2C%22character%22%3A41%7D%7D%5D%2C%22234ab3f2-e8c7-4bb1-8b60-977f07ea121e%22%5D "Go to definition").
+- **Interpolación `{{ ... }}`**: La interpolación en Vue.js se usa para mostrar datos dinámicos en el template. Aquí, `{{ slides[currentSlide].description }}` muestra la descripción del slide actual.
+
+Con esta explicación, deberías tener una mejor comprensión de lo que hace este fragmento de código y cómo funciona en el contexto de un componente Vue.js.
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
                   
 
-// Mostrar Lore
-// const mostrarLore = ref(false);
-// const mostrarLoreDesc = () => {
-//     mostrarLore.value = !mostrarLore.value;
-
-// }
-
-// //Mostrar Lore Personajes botones
-// const mostrarPersonajes = ref(false);
-// const mostrarLorePersonajes = () => {
-//     mostrarPersonajes.value = !mostrarPersonajes.value;
-// }
-
-
-// const semidioses = ref(false);
-// const mostrarDescSemidioses = () => {
-//     semidioses.value = !semidioses.value;
-// }
 
 </script>
 
@@ -293,12 +309,19 @@ const description = `L a Historia de Shadows of the erdtree va más allá de las
 
 <style scoped>
 @import url("./StyleComponents/loreDesc.css");
+
+
 .book{
     width: 300px;
-    position: absolute;
+
     top: 0;
     left: 0;
     margin: auto;
+    display: flex ;
+    justify-content: center  ;
+    align-items: center ;
+    cursor: pointer;
+
 }
 
 
@@ -452,9 +475,9 @@ const description = `L a Historia de Shadows of the erdtree va más allá de las
     border-image: fill 0 linear-gradient(to top, rgba(0, 0, 0, 0.493), rgba(0, 0, 0, 0.5));
     background-size: cover;
 
-
-
 }
+
+
 /*
 
 .lore {

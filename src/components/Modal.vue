@@ -39,7 +39,7 @@ const closeModal = () => {
 
 .modal-content {
   background: rgba(0, 0, 0, 0);
-  padding: 18em;
+  padding: 8em;
   border-radius: 8px;
   position: relative;
   width: 100%;
