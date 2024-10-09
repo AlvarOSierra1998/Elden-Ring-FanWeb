@@ -144,9 +144,11 @@
                 <div class="bloque">
                   
                    <img @click="toggledesc"  src="../assets/ER_icon_Book_Golden_Order_Principia.webp" class="book animate__animated animate__fadeInLeft" alt="Golden Order Principia">
-                      <div v-if="mostrardesc">
+                      <div class="bloque-txt" v-if="mostrardesc">
                         <p id="lore" v-if="slides.length > 0" >
-                          <span class="txt-lore">{{ slides[currentSlide].description }}</span>
+                          <p class="txt-lore">{{ slides[currentSlide].description }}</p>
+                          <p class="txt-lore">{{ slides[currentSlide].parrafo2 }}</p>
+                          <p class="txt-lore">{{ slides[currentSlide].parrafo3 }}</p>
                         </p>
                       </div>
                     
