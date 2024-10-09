@@ -143,15 +143,36 @@
               
                 <div class="bloque">
                   
-                   <img @click="toggledesc"  src="../assets/ER_icon_Book_Golden_Order_Principia.webp" class="book animate__animated animate__fadeInLeft" alt="Golden Order Principia">
-                      <div class="bloque-txt" v-if="mostrardesc">
-                        <p id="lore" v-if="slides.length > 0" >
-                          <p class="txt-lore">{{ slides[currentSlide].description }}</p>
-                          <p class="txt-lore">{{ slides[currentSlide].parrafo2 }}</p>
-                          <p class="txt-lore">{{ slides[currentSlide].parrafo3 }}</p>
-                        </p>
+                  <img @click="toggledesc"  src="../assets/ER_icon_Book_Golden_Order_Principia.webp" class="book animate__animated animate__fadeInLeft" alt="Golden Order Principia">
+                  <div class="card text-bg-dark container-fluid text-center p-0 m-0" v-if="mostrardesc">
+                    <img src="../assets/marika.webp" class="card-img img-background " alt="...">
+                    <div class="card-img-overlay row row-cols-7" v-if="slides.length > 0">
+                      <h2 class="card-title">Lore</h2>
+
+                      <div class="card carta-props col" style="width: 18rem;">
+                          <img src="../assets/ER_Spell_Sigil_Erdtree.webp" class="card-img-top foto-top" alt="Erdtree">
+                        <div class="card-body">
+                          <p class=" txt-lore card-text">{{ slides[currentSlide].description }}</p>
+                        
+                        </div>
                       </div>
-                    
+                      <div class="card carta-props col " style="width: 18rem;">
+                          <img src="../assets/frenzy.png" class="card-img-top foto-top" alt="...">
+                        <div class="card-body">
+                          <p class=" txt-lore card-text">{{ slides[currentSlide].description }}</p>
+                        </div>
+                      </div>
+
+                      <div class="card carta-props  col" style="width: 18rem;">
+                          <img src="../assets/erdtree.webp" class="card-img-top foto-top" alt="...">
+                        <div class="card-body ">
+                          <p class=" txt-lore card-text">{{ slides[currentSlide].description }}</p>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
                 </div>
                
                  

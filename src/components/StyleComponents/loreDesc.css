@@ -6,50 +6,40 @@
 #lore{
   /* background-color: rgba(0, 0, 0, 0.753); */
   margin: auto;
-  padding: 14em;
+
   border-radius: 0%;
   /* border: #ffbf00 1px dashed; */
-  background-image: url("../../assets/book2.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 113%;
   background-attachment: scroll;
-  box-shadow: inset 50px -10px 600px 300px #000000;
   border-radius: 00%;
   
   
   
   
 }
-
-
-.txt-lore{
-    font-size: 17px !important;
-    padding: 0em 6em 0 6em;
-    width: 60%;
-    font-family: "IBM Plex Mono", monospace;
-    font-weight: 400;
-    font-style: normal;
-    color: #ffffff;
-  margin: auto;
-  text-align: center;
-     color: #000;
-     column-count: 2; /* Divide el texto en dos columnas */
-  column-gap:100px; /* Espacio entre las columnas */
-  column-fill: balance; /* Distribuye el texto de forma equilibrada */
-  /* box-shadow: 0 0 10px 10px #413d32; */
-  display: flex;
-
-    
-  
+.img-background{
+  opacity: 0.3;
+  background: transparent;
 }
+
 .bloque-txt{
   display: inline-flex !important;
   margin: auto;
   text-align: center;
   width: 80% !important;
 }
+.foto-top{
+  border-radius: 100%;
+  width: 70%;
+  margin: auto;
+}
 
+.carta-props {
+  background: transparent;
+  color: #ffffff;
+}
 
 h3{
  margin: auto;
