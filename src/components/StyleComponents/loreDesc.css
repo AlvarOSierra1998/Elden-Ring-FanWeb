@@ -15,10 +15,34 @@
   background-attachment: scroll;
   border-radius: 00%;
   
-  
-  
-  
 }
+
+.animate__animated .animate__fadeInDown{
+  animation-duration: 1s;
+}
+
+.elemento1 {
+  display: inline-block;
+  margin: 0 0.5rem;
+
+  animation: fadeInDown; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 1s; /* don't forget to set a duration! */
+}
+.elemento2 {
+  display: inline-block;
+  margin: 0 0.5rem;
+
+  animation: fadeInDown; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 1.5s; /* don't forget to set a duration! */
+}
+.elemento3 {
+  display: inline-block;
+  margin: 0 0.5rem;
+
+  animation: fadeInDown; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 1.75s; /* don't forget to set a duration! */
+}
+
 .img-background{
   opacity: 0.3;
   background: transparent;
@@ -36,9 +60,27 @@
   margin: auto;
 }
 
+.foto-top2{
+  border-radius: 100%;
+  width: 90%;
+  margin: auto;
+}
+
+
 .carta-props {
   background: transparent;
   color: #ffffff;
+}
+
+.carta-fondo1{
+  transition: all 6s ease-in-out;
+  
+}
+.carta-fondo1:hover{
+  background-image: url("../../assets/aureo.jpeg");
+  background-size: cover;
+  border-image: fill 0 linear-gradient(to top, rgba(0, 0, 0, 0.664), rgba(0, 0, 0, 0.582));
+  transition: all 6s ease-in-out;
 }
 
 h3{

@@ -145,26 +145,26 @@
                   
                   <img @click="toggledesc"  src="../assets/ER_icon_Book_Golden_Order_Principia.webp" class="book animate__animated animate__fadeInLeft" alt="Golden Order Principia">
                   <div class="card text-bg-dark container-fluid text-center p-0 m-0" v-if="mostrardesc">
-                    <img src="../assets/marika.webp" class="card-img img-background " alt="...">
+                    <img src="../assets/marika.webp" class="card-img img-background " alt="marika">
                     <div class="card-img-overlay row row-cols-7" v-if="slides.length > 0">
                       <h2 class="card-title">Lore</h2>
 
-                      <div class="card carta-props col" style="width: 18rem;">
-                          <img src="../assets/ER_Spell_Sigil_Erdtree.webp" class="card-img-top foto-top" alt="Erdtree">
+                      <div class="card carta-props col carta-fondo1" style="width: 18rem;">
+                          <img src="../assets/ER_Spell_Sigil_Erdtree.webp" class="card-img-top foto-top animate__animated animate__fadeInDown elemento1" alt="Erdtree">
                         <div class="card-body">
                           <p class=" txt-lore card-text">{{ slides[currentSlide].description }}</p>
                         
                         </div>
                       </div>
                       <div class="card carta-props col " style="width: 18rem;">
-                          <img src="../assets/frenzy.png" class="card-img-top foto-top" alt="...">
+                          <img src="../assets/messmer.png" class="card-img-top foto-top2 animate__animated animate__fadeInDown elemento2" alt="...">
                         <div class="card-body">
                           <p class=" txt-lore card-text">{{ slides[currentSlide].description }}</p>
                         </div>
                       </div>
 
                       <div class="card carta-props  col" style="width: 18rem;">
-                          <img src="../assets/erdtree.webp" class="card-img-top foto-top" alt="...">
+                          <img src="../assets/erdtree.webp" class="card-img-top foto-top animate__animated animate__fadeInDown elemento3" alt="...">
                         <div class="card-body ">
                           <p class=" txt-lore card-text">{{ slides[currentSlide].description }}</p>
                         </div>
@@ -495,7 +495,7 @@ Con esta explicación, deberías tener una mejor comprensión de lo que hace est
     display: inline-flex;
     justify-content: space-evenly;
     background-image: url("../assets/wallpaper.jpeg");
-    border-image: fill 0 linear-gradient(to top, rgba(0, 0, 0, 0.493), rgba(0, 0, 0, 0.5));
+    border-image: fill 0 linear-gradient(to top, rgba(0, 0, 0, 0.747), rgba(0, 0, 0, 0.5));
     background-size: cover;
 
 }
