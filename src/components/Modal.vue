@@ -48,15 +48,20 @@ const closeModal = () => {
 
 .modal-close {
   position: absolute;
-  top: 10px;
+  top: 23px;
   right: 10px;
   background: none;
   border: none;
   font-size: 20px;
   cursor: pointer;
   color: aliceblue;
+  transition: all 0.3s;
 }
-
+.modal-close:hover {
+ background-color: aliceblue;
+ color: black;
+ border-radius: 20%;
+}
 /* Transiciones */
 
 .modal-fade-enter-active, .modal-fade-leave-active {
