@@ -66,22 +66,88 @@
   margin: auto;
 }
 
+.carta-fondo1, .carta-fondo2, .carta-fondo3 {
+  box-shadow: 0 0 40px 0 #000000;
+}
 
 .carta-props {
   background: transparent;
   color: #ffffff;
 }
-
-.carta-fondo1{
-  transition: all 6s ease-in-out;
-  
+/*Fondo de las cartas*/
+.carta-fondo1 {
+  position: relative; /* Necesario para posicionar el pseudo-elemento */
+  overflow: hidden; /* Asegura que el pseudo-elemento no se desborde */
 }
-.carta-fondo1:hover{
+
+.carta-fondo1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url("../../assets/aureo.jpeg");
   background-size: cover;
-  border-image: fill 0 linear-gradient(to top, rgba(0, 0, 0, 0.664), rgba(0, 0, 0, 0.582));
-  transition: all 6s ease-in-out;
+  opacity: 0; /* Inicialmente invisible */
+  transition: opacity .3s ease-in-out; /* Transición suave para la opacidad */
 }
+
+.carta-fondo1:hover::before {
+  opacity: 0.2; /* Hace visible el pseudo-elemento al hacer hover */
+  z-index: 0;
+}
+
+/***************************/
+
+.carta-fondo2 {
+  position: relative; /* Necesario para posicionar el pseudo-elemento */
+  overflow: hidden; /* Asegura que el pseudo-elemento no se desborde */
+}
+
+.carta-fondo2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../assets/messmer-fondo.webp");
+  background-size: cover;
+  opacity: 0; /* Inicialmente invisible */
+  transition: opacity .3s ease-in-out; /* Transición suave para la opacidad */
+}
+
+.carta-fondo2:hover::before {
+  opacity: 0.2; /* Hace visible el pseudo-elemento al hacer hover */
+  z-index: 0;
+}
+
+/***************************************/
+
+.carta-fondo3 {
+  position: relative; /* Necesario para posicionar el pseudo-elemento */
+  overflow: hidden; /* Asegura que el pseudo-elemento no se desborde */
+}
+
+.carta-fondo3::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../assets/marika-fondo.webp");
+  background-size: cover;
+  opacity: 0; /* Inicialmente invisible */
+  transition: opacity .3s ease-in-out; /* Transición suave para la opacidad */
+}
+
+.carta-fondo3:hover::before {
+  opacity: 0.2; /* Hace visible el pseudo-elemento al hacer hover */
+  z-index: 0;
+}
+
 
 h3{
  margin: auto;
