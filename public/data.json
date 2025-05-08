@@ -12,19 +12,19 @@
     
   },
   {
-    "headlineFirstLine": "Nulla",
-    "headlineSecondLine": "Auctor",
-    "sublineFirstLine": "Il n'y a rien de neuf sous",
-    "sublineSecondLine": "le soleil",
-    "bgImg": "https://i.postimg.cc/Qx34VNXM/slide1.jpg",
-    "rectImg": "https://i.postimg.cc/ryWZ8R2b/slide-rect1.jpg"
+    "headlineFirstLine": "Personajes",
+    "headlineSecondLine": "Principales",
+    "sublineFirstLine": "Shadows of the erdtree",
+    "sublineSecondLine": "NPcS",
+    "bgImg": "././src/assets/trailer.jpg",
+    "rectImg": "././src/assets/marika-fondo.webp"
   },
   {
-    "headlineFirstLine": "Nullam",
-    "headlineSecondLine": "Ultricies",
-    "sublineFirstLine": "Τίποτα καινούργιο κάτω από",
-    "sublineSecondLine": "τον ήλιο",
-    "bgImg": "https://i.postimg.cc/t4RBtrnQ/slide2.jpg",
+    "headlineFirstLine": "Enemigos",
+    "headlineSecondLine": "Principales", 
+    "sublineFirstLine": "Shadows of the erdtree",
+    "sublineSecondLine": "Enemigos y Jefes",
+    "bgImg": "././src/assets/fondo-enemigos.jpg",
     "rectImg": "https://i.postimg.cc/3JFLGMRF/slide-rect2.jpg"
   }
 ]
