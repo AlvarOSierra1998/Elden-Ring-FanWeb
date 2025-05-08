@@ -44,6 +44,7 @@ const closeModal = () => {
   position: relative;
   width: 100%;
   background-size: cover;
+  padding-bottom: 0 !important;
 }
 
 .modal-close {

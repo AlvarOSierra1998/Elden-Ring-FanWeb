@@ -64,6 +64,7 @@
                  
                 </Modal>
 
+        <!--MENU SLIDES-->
         <h2 class="slide-side-text">
           <span>{{ slide.sublineFirstLine }} / </span>
           <span>{{ slide.sublineSecondLine }}</span>
