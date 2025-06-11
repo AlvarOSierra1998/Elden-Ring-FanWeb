@@ -57,24 +57,24 @@
             <img @click="togglePersonajes" src="../assets/ER_icon_Book_Golden_Order_Principia.webp" class="book animate__animated animate__fadeInLeft" alt="Golden Order Principia">
             <transition name="fade">
               <div class="card text-bg-dark container-fluid text-center p-0 m-0" v-if="mostrarPersonajes">
-                <img src="../assets/marika.webp" class="card-img img-background" alt="marika">
+                <img src="../assets/marika-fondo.webp" class="card-img img-background" alt="marika">
                 <div class="card-img-overlay row row-cols-7 p-0 m-0">
                   <div class="card border-0 carta-props col carta-fondo1" style="width: 18rem;">
-                    <img src="../assets/leda.jpeg" class="card-img-top p-0 foto-top animate__animated animate__fadeInDown elemento1" alt="Leda">
+                    <img src="../assets/ledaFullBody.png" class="card-img-top p-0 foto-top animate__animated animate__fadeInDown elemento1" alt="Leda">
                     <div class="card-body">
-                      <p class="txt-lore card-text">{{ slide.personaje1 }}</p>
+                      <p class="txt-lore card-text">{{ slide.personaje1Lore }}</p>
                     </div>
-                  </div>
+                  </div> 
                   <div class="card border-0 carta-props col carta-fondo2" style="width: 18rem;">
                     <img src="../assets/messmer.png" class="card-img-top foto-top2 animate__animated animate__fadeInDown elemento2" alt="Messmer">
                     <div class="card-body">
-                      <p class="txt-lore card-text">{{ slide.personaje2 }}</p>
+                      <p class="txt-lore card-text">{{ slide.personaje2Lore }}</p>
                     </div>
                   </div>
                   <div class="card border-0 carta-props col carta-fondo3" style="width: 18rem;">
                     <img src="../assets/erdtree.webp" class="card-img-top foto-top animate__animated animate__fadeInDown elemento3" alt="Erdtree">
                     <div class="card-body">
-                      <p class="txt-lore card-text">{{ slide.personaje3 }}</p>
+                      <p class="txt-lore card-text">{{ slide.personaje3Lore }}</p>
                     </div>
                   </div>
                 </div>

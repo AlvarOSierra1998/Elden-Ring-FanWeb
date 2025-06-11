@@ -17,7 +17,10 @@
     "sublineFirstLine": "Shadows of the erdtree",
     "sublineSecondLine": "NPcS",
     "bgImg": "././src/assets/trailer.jpg",
-    "rectImg": "././src/assets/marika-fondo.webp"
+    "rectImg": "././src/assets/marika-fondo.webp",
+    "personaje1Lore": " La Caballera de la Aguja Leda es una guerrera noble y valiente, que ha dedicado su vida a proteger el Reino de las Sombras. Con su armadura reluciente y su espada afilada, Leda es una fuerza a tener en cuenta en el campo de batalla. Su lealtad hacia Miquella el Cortés es inquebrantable, y está dispuesta a hacer lo que sea necesario para cumplir con su deber.",
+    "personaje2Lore": "El Empíreo Miquella el Cortés es un ser divino de gran poder y sabiduría. Su presencia en el Reino de las Sombras es un faro de esperanza para aquellos que buscan la redención y la justicia. Miquella es conocido por su compasión hacia los demás, y su deseo de restaurar el equilibrio en el mundo. Su crisálida es un símbolo de su conexión con las fuerzas cósmicas que rigen el universo."
+
   },
   {
     "headlineFirstLine": "Enemigos",
