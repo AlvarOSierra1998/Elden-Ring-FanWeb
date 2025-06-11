@@ -6,11 +6,13 @@
 
 <main>
   <section>
-    <lore />
-   
+    <Main />
+    
+  
     
 
   </section>
+  
 
 </main>
 
@@ -19,7 +21,8 @@
 
 <script setup>
 import parallax from './components/parallax.vue'
-import lore from './components/Lore.vue'
+import Main from './components/Main.vue'
+
 
 
 
