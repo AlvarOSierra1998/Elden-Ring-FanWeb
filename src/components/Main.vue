@@ -28,7 +28,9 @@
         <div class="slide-rect-filter">
           <div
             class="slide-rect"
-            :style="{ 'border-image-source': 'url(' + slide.rectImg + ')' }"
+            :style="{
+              'border-image-source': 'url(' + slide.rectImg + ')'
+            }"
           ></div>
         </div>
 
@@ -38,26 +40,28 @@
             <p>{{ slide.headlineSecondLine }}</p>
           </h1>
 
-          <!-- CALL TO ACTION -->
           <a
             href="#"
-            @click.prevent="toogle()"
+            @click.prevent="toogle"
             class="slide-content-cta"
           >
             Mostrar
           </a>
         </div>
 
-        <!-- Modal -->
+        <!-- ================================================= -->
+        <!-- MODAL -->
+        <!-- ================================================= -->
+
         <Modal
           :show="mostrar"
           @close="toogle"
           :class="{ desc: mostrar }"
         >
 
-          <!-- ========================================================= -->
-          <!-- SLIDE 0: LAS TIERRAS DE LAS SOMBRAS -->
-          <!-- ========================================================= -->
+          <!-- ================================================= -->
+          <!-- SLIDE 0 -->
+          <!-- ================================================= -->
 
           <div
             v-if="currentSlide === 0"
@@ -65,7 +69,7 @@
           >
             <img
               @click="toggledesc"
-              :src="goldenOrder"
+              src="/assets/ER_icon_Book_Golden_Order_Principia.webp"
               class="book animate__animated animate__fadeInLeft"
               alt="Golden Order Principia"
             />
@@ -76,19 +80,21 @@
                 class="card text-bg-dark container-fluid text-center p-0 m-0"
               >
                 <img
-                  :src="marika"
+                  src="/assets/marika.webp"
                   class="card-img img-background"
                   alt="Marika"
                 />
 
-                <div class="card-img-overlay row row-cols-7 p-0 m-0">
+                <div
+                  class="card-img-overlay row row-cols-7 p-0 m-0"
+                >
 
                   <div
                     class="card border-0 carta-props col carta-fondo1"
                     style="width: 18rem;"
                   >
                     <img
-                      :src="erdtreeSigil"
+                      src="/assets/ER_Spell_Sigil_Erdtree.webp"
                       class="card-img-top p-0 foto-top animate__animated animate__fadeInDown elemento1"
                       alt="Erdtree"
                     />
@@ -105,7 +111,7 @@
                     style="width: 18rem;"
                   >
                     <img
-                      :src="messmer"
+                      src="/assets/messmer.png"
                       class="card-img-top foto-top2 animate__animated animate__fadeInDown elemento2"
                       alt="Messmer"
                     />
@@ -122,7 +128,7 @@
                     style="width: 18rem;"
                   >
                     <img
-                      :src="erdtree"
+                      src="/assets/erdtree.webp"
                       class="card-img-top p-0 foto-top animate__animated animate__fadeInDown elemento3"
                       alt="Erdtree"
                     />
@@ -139,9 +145,9 @@
             </transition>
           </div>
 
-          <!-- ========================================================= -->
-          <!-- SLIDE 1: PERSONAJES PRINCIPALES -->
-          <!-- ========================================================= -->
+          <!-- ================================================= -->
+          <!-- SLIDE 1 -->
+          <!-- ================================================= -->
 
           <div
             v-else-if="currentSlide === 1"
@@ -149,7 +155,7 @@
           >
             <img
               @click="togglePersonajes"
-              :src="goldenOrder"
+              src="/assets/ER_icon_Book_Golden_Order_Principia.webp"
               class="book animate__animated animate__fadeInLeft"
               alt="Golden Order Principia"
             />
@@ -160,19 +166,21 @@
                 class="card text-bg-dark container-fluid text-center p-0 m-0"
               >
                 <img
-                  :src="marikaFondo"
+                  src="/assets/marika-fondo.webp"
                   class="card-img img-background"
                   alt="Marika"
                 />
 
-                <div class="card-img-overlay row row-cols-7 p-0 m-0">
+                <div
+                  class="card-img-overlay row row-cols-7 p-0 m-0"
+                >
 
                   <div
                     class="card border-0 carta-props col carta-fondo1"
                     style="width: 18rem;"
                   >
                     <img
-                      :src="leda"
+                      src="/assets/ledaFullBody.png"
                       class="card-img-top p-0 foto-top animate__animated animate__fadeInDown elemento1"
                       alt="Leda"
                     />
@@ -189,7 +197,7 @@
                     style="width: 18rem;"
                   >
                     <img
-                      :src="messmer"
+                      src="/assets/messmer.png"
                       class="card-img-top foto-top2 animate__animated animate__fadeInDown elemento2"
                       alt="Messmer"
                     />
@@ -206,7 +214,7 @@
                     style="width: 18rem;"
                   >
                     <img
-                      :src="erdtree"
+                      src="/assets/erdtree.webp"
                       class="card-img-top p-0 foto-top animate__animated animate__fadeInDown elemento3"
                       alt="Erdtree"
                     />
@@ -223,9 +231,9 @@
             </transition>
           </div>
 
-          <!-- ========================================================= -->
-          <!-- SLIDE 2: ENEMIGOS PRINCIPALES -->
-          <!-- ========================================================= -->
+          <!-- ================================================= -->
+          <!-- SLIDE 2 -->
+          <!-- ================================================= -->
 
           <div
             v-else-if="currentSlide === 2"
@@ -233,7 +241,7 @@
           >
             <img
               @click="toggleEnemigos"
-              :src="goldenOrder"
+              src="/assets/ER_icon_Book_Golden_Order_Principia.webp"
               class="book animate__animated animate__fadeInLeft"
               alt="Golden Order Principia"
             />
@@ -244,19 +252,21 @@
                 class="card text-bg-dark container-fluid text-center p-0 m-0"
               >
                 <img
-                  :src="marika"
+                  src="/assets/marika.webp"
                   class="card-img img-background"
                   alt="Marika"
                 />
 
-                <div class="card-img-overlay row row-cols-7 p-0 m-0">
+                <div
+                  class="card-img-overlay row row-cols-7 p-0 m-0"
+                >
 
                   <div
                     class="card border-0 carta-props col carta-fondo1"
                     style="width: 18rem;"
                   >
                     <img
-                      :src="enemigo1"
+                      src="/assets/enemigo1.png"
                       class="card-img-top p-0 foto-top animate__animated animate__fadeInDown elemento1"
                       alt="Enemigo 1"
                     />
@@ -273,7 +283,7 @@
                     style="width: 18rem;"
                   >
                     <img
-                      :src="enemigo2"
+                      src="/assets/enemigo2.png"
                       class="card-img-top foto-top2 animate__animated animate__fadeInDown elemento2"
                       alt="Enemigo 2"
                     />
@@ -290,8 +300,8 @@
                     style="width: 18rem;"
                   >
                     <img
-                      :src="enemigo3"
-                      class="card-img-top foto-top animate__animated animate__fadeInDown elemento3"
+                      src="/assets/enemigo3.png"
+                      class="card-img-top p-0 foto-top animate__animated animate__fadeInDown elemento3"
                       alt="Enemigo 3"
                     />
 
@@ -309,7 +319,10 @@
 
         </Modal>
 
+        <!-- ================================================= -->
         <!-- MENU SLIDES -->
+        <!-- ================================================= -->
+
         <h2 class="slide-side-text">
           <span>{{ slide.sublineFirstLine }} / </span>
           <span>{{ slide.sublineSecondLine }}</span>
@@ -318,9 +331,9 @@
       </div>
     </div>
 
-    <!-- ========================================================= -->
-    <!-- CONTROLES DE SLIDES -->
-    <!-- ========================================================= -->
+    <!-- ================================================= -->
+    <!-- CONTROLES -->
+    <!-- ================================================= -->
 
     <div class="controls-container">
       <button
@@ -335,9 +348,9 @@
       </button>
     </div>
 
-    <!-- ========================================================= -->
+    <!-- ================================================= -->
     <!-- PAGINACIÓN -->
-    <!-- ========================================================= -->
+    <!-- ================================================= -->
 
     <div class="pagination-container">
       <span
@@ -356,24 +369,9 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import Modal from './Modal.vue'
 
-/* ============================================================
-   IMÁGENES
-   ============================================================ */
-
-import goldenOrder from '../assets/ER_icon_Book_Golden_Order_Principia.webp'
-import marika from '../assets/marika.webp'
-import marikaFondo from '../assets/marika-fondo.webp'
-import erdtree from '../assets/erdtree.webp'
-import messmer from '../assets/messmer.png'
-import leda from '../assets/ledaFullBody.png'
-import enemigo1 from '../assets/enemigo1.png'
-import enemigo2 from '../assets/enemigo2.png'
-import enemigo3 from '../assets/enemigo3.png'
-import erdtreeSigil from '../assets/ER_Spell_Sigil_Erdtree.webp'
-
 
 /* ============================================================
-   MODAL PRINCIPAL
+   MODAL
    ============================================================ */
 
 const mostrar = ref(false)
@@ -436,10 +434,7 @@ const updateSlide = (index) => {
   currentSlide.value = index
   isFirstLoad.value = false
 
-  // Cerramos el modal al cambiar de slide
   mostrar.value = false
-
-  // Cerramos también los contenidos internos
   mostrardesc.value = false
   mostrarPersonajes.value = false
   mostrarEnemigos.value = false
@@ -447,7 +442,7 @@ const updateSlide = (index) => {
 
 
 /* ============================================================
-   CARGAR JSON
+   JSON
    ============================================================ */
 
 const fetchSlides = async () => {
@@ -505,7 +500,7 @@ const handleTouchEnd = () => {
 
 
 /* ============================================================
-   MOUNT / UNMOUNT
+   MOUNT
    ============================================================ */
 
 onMounted(() => {
@@ -532,6 +527,11 @@ onMounted(() => {
     handleTouchEnd
   )
 })
+
+
+/* ============================================================
+   UNMOUNT
+   ============================================================ */
 
 onUnmounted(() => {
   if (!productRotatorSlide) {
@@ -563,6 +563,7 @@ onUnmounted(() => {
   gap: 1rem;
   margin-bottom: 1rem;
 }
+
 .tabs button {
   padding: 0.5rem 1rem;
   background: #222;
@@ -572,50 +573,55 @@ onUnmounted(() => {
   border-radius: 0.5rem 0.5rem 0 0;
   font-weight: bold;
 }
+
 .tabs button.active {
   background: #ffd700;
   color: #222;
 }
 
-/* Añade tus estilos aquí */
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 0.5s ease;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active en versiones anteriores de Vue */ {
+
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 
-.book{
-    width: 300px;
-    top: 0;
-    left: 0;
-    margin: auto;
-    display: flex ;
-    justify-content: center  ;
-    align-items: center ;
-    cursor: pointer;
-    transition: 0.5s !important;
+.book {
+  width: 300px;
+  top: 0;
+  left: 0;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.5s !important;
 }
-/* .book:hover{
-   width: 360px;
-    transition: 0.5s !important;
-} */
 
 .desc {
-    font-size: 1rem;
-    font-family: 'Roboto', sans-serif;
-    color: #f5f5f5;
-    margin: auto;
-    padding: 0;
-    text-align: justify;
-    text-justify: inter-word;
-    line-height: 1.5;
-    width: 100%;
-    /*REVISAR*/
-    display: inline-flex;
-    justify-content: space-evenly;
-    background-image: url("../assets/wallpaper.jpeg");
-    border-image: fill 0 linear-gradient(to top, rgba(0, 0, 0, 0.747), rgba(0, 0, 0, 0.5));
-    background-size: cover;
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  color: #f5f5f5;
+  margin: auto;
+  padding: 0;
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 1.5;
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-evenly;
+
+  background-image: url("/assets/wallpaper.jpeg");
+
+  border-image: fill 0 linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.747),
+    rgba(0, 0, 0, 0.5)
+  );
+
+  background-size: cover;
 }
 </style>
