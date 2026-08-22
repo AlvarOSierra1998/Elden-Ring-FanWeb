@@ -369,6 +369,16 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import Modal from './Modal.vue'
 
+import goldenOrder from '../assets/ER_Icon_Book_Golden_Order_Principia.webp'
+import marika from '../assets/marika.webp'
+import marikaFondo from '../assets/marika-fondo.webp'
+import erdtree from '../assets/erdtree.webp'
+import messmer from '../assets/messmer.png'
+import leda from '../assets/LedaFullBody.png'
+import erdtreeSigil from '../assets/ER_Spell_Sigil_Erdtree.webp'
+
+import wallpaper from '../assets/wallpaper.jpeg'
+
 
 /* ============================================================
    MODAL
