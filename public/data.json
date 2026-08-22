@@ -7,28 +7,29 @@
     "bgImg": "https://images2.alphacoders.com/136/1363595.jpeg",
     "rectImg": "https://images6.alphacoders.com/136/1366850.jpeg",
     "description": "La Historia de Shadows of the erdtree va más allá de las Tierras Intermedias, esta nueva\naventura tiene lugar en el Reino de las sombras, donde el Empíreo Miquella se encuentra.\n\nTras nuestra lucha frente al Señor de la Sangre Mohg y\nhabiendo derrotado tambien al semidios Radhan Azote de las estrellas. Debemos\nacudir al Panteon dinástico\ndonde la crisálida de un dios dormido se encuentra.",
-    "parrafo2" : "\n\nAllí nos encontraremos con la Caballera de la aguja Leda, quien nos dará la\nbienvenida a este nuevo mundo, El Reino de las Sombras.\n\nTras hablar con Leda nos explica que ella también fue guiada por la fe al igual que sus compatriotas\nquienes han acudido a la llamada de Miquella el Cortés, Leda nos señala a la crisalida del empiero\npara asi poder transportarnos a las tierras sombrías.",
-    "parrafo3" : "\n\nUna vez en el reino de las sombras, nos encontramos con un mundo oscuro y desolado, donde la luz no\nexiste y la oscuridad reina, en este mundo nos encontramos con seres de pesadilla y criaturas que no\npertenecen a este mundo."
-    
+    "parrafo2": "Allí nos encontraremos con la Caballera de la aguja Leda, quien nos dará la\nbienvenida a este nuevo mundo, El Reino de las Sombras.\n\nTras hablar con Leda nos explica que ella también fue guiada por la fe al igual que sus compatriotas\nquienes han acudido a la llamada de Miquella el Cortés, Leda nos señala a la crisalida del empiero\npara asi poder transportarnos a las tierras sombrías.",
+    "parrafo3": "Una vez en el reino de las sombras, nos encontramos con un mundo oscuro y desolado, donde la luz no\nexiste y la oscuridad reina, en este mundo nos encontramos con seres de pesadilla y criaturas que no\npertenecen a este mundo."
   },
   {
     "headlineFirstLine": "Personajes",
     "headlineSecondLine": "Principales",
     "sublineFirstLine": "Shadows of the erdtree",
-    "sublineSecondLine": "NPcS",
-    "bgImg": "././src/assets/trailer.jpg",
-    "rectImg": "././src/assets/marika-fondo.webp",
-    "personaje1Lore": " La Caballera de la Aguja Leda es una guerrera noble y valiente, que ha dedicado su vida a proteger el Reino de las Sombras. Con su armadura reluciente y su espada afilada, Leda es una fuerza a tener en cuenta en el campo de batalla. Su lealtad hacia Miquella el Cortés es inquebrantable, y está dispuesta a hacer lo que sea necesario para cumplir con su deber.",
-    "personaje2Lore": "El Empíreo Miquella el Cortés es un ser divino de gran poder y sabiduría. Su presencia en el Reino de las Sombras es un faro de esperanza para aquellos que buscan la redención y la justicia. Miquella es conocido por su compasión hacia los demás, y su deseo de restaurar el equilibrio en el mundo. Su crisálida es un símbolo de su conexión con las fuerzas cósmicas que rigen el universo."
-
+    "sublineSecondLine": "NPCs",
+    "bgImg": "trailer.jpg",
+    "rectImg": "marika-fondo.webp",
+    "personaje1Lore": "La Caballera de la Aguja Leda es una guerrera noble y valiente, que ha dedicado su vida a proteger el Reino de las Sombras. Con su armadura reluciente y su espada afilada, Leda es una fuerza a tener en cuenta en el campo de batalla. Su lealtad hacia Miquella el Cortés es inquebrantable, y está dispuesta a hacer lo que sea necesario para cumplir con su deber.",
+    "personaje2Lore": "El Empíreo Miquella el Cortés es un ser divino de gran poder y sabiduría. Su presencia en el Reino de las Sombras es un faro de esperanza para aquellos que buscan la redención y la justicia. Miquella es conocido por su compasión hacia los demás, y su deseo de restaurar el equilibrio en el mundo. Su crisálida es un símbolo de su conexión con las fuerzas cósmicas que rigen el universo.",
+    "personaje3Lore": ""
   },
   {
     "headlineFirstLine": "Enemigos",
-    "headlineSecondLine": "Principales", 
+    "headlineSecondLine": "Principales",
     "sublineFirstLine": "Shadows of the erdtree",
     "sublineSecondLine": "Enemigos y Jefes",
-    "bgImg": "././src/assets/fondo-enemigos.jpg",
-    "rectImg": "https://i.postimg.cc/3JFLGMRF/slide-rect2.jpg"
+    "bgImg": "fondo-enemigos.jpg",
+    "rectImg": "https://i.postimg.cc/3JFLGMRF/slide-rect2.jpg",
+    "enemigo1": "",
+    "enemigo2": "",
+    "enemigo3": ""
   }
 ]
-
