@@ -67,7 +67,7 @@
               >
                 <img :src="marika" class="card-img img-background" alt="Marika" />
 
-                <div class="card-img-overlay row row-cols-7 p-0 m-0">
+                <div class="card-img-overlay cartas-grid">
                   <div class="card border-0 carta-props col carta-fondo1">
                     <img
                       :src="erdtreeSigil"
@@ -121,7 +121,7 @@
               >
                 <img :src="marikaFondo" class="card-img img-background" alt="Marika" />
 
-                <div class="card-img-overlay row row-cols-7 p-0 m-0">
+                <div class="card-img-overlay cartas-grid">
                   <div class="card border-0 carta-props col carta-fondo1">
                     <img
                       :src="leda"
@@ -175,7 +175,7 @@
               >
                 <img :src="marika" class="card-img img-background" alt="Marika" />
 
-                <div class="card-img-overlay row row-cols-7 p-0 m-0">
+                <div class="card-img-overlay cartas-grid">
                   <div class="card border-0 carta-props col carta-fondo1">
                     <img
                       :src="enemigo1"
@@ -482,67 +482,72 @@ onUnmounted(() => {
 </script>
 
 <!-- ============================================================
-     VARIABLES RESPONSIVE (SIN scoped, en :root)
-     Así las heredan también los elementos teleportados al body.
-     Para reutilizar en otros componentes: usa var(--...) y ya.
+     VARIABLES RESPONSIVE (sin scoped, en :root)
      ============================================================ -->
 <style>
 :root {
-  /* Escritorio (por defecto) */
+  /* Modal / cartas */
   --book-width: 300px;
-  --card-width: 18rem;
-  --cards-gap: 1rem;
-  --fade-top: 90px;     /* dónde empieza el difuminado (alto de la franja negra del sigilo) */
-  --fade-size: 120px;   /* largo del difuminado */
-  --title-size: clamp(2rem, 6vw, 5rem);
-  --side-text-size: 0.75rem;
+  --card-max: 22rem;         /* ancho máximo de cada carta */
+  --cards-gap: 1.25rem;
+  --cards-pad: 2rem 1.5rem;
   --lore-size: 1rem;
+  --foto-max: 220px;         /* tamaño máx. de la imagen circular de cada carta */
+
+  /* Difuminado de la imagen de fondo (zona roja) */
+  --fade-size: 22%;
+
+  /* Slide en móvil (solo ≤767.98px) */
+  --rect-left: 12vw;
+  --rect-w: 44vw;
+  --rect-h: 32vh;
+  --rect-border: 3vh;
+  --title-size: clamp(2.4rem, 11vw, 4rem);
 }
 
-/* Portátil pequeño / tablet horizontal */
 @media (max-width: 1199.98px) {
   :root {
     --book-width: 250px;
-    --card-width: 15rem;
-    --fade-top: 75px;
-    --fade-size: 100px;
+    --card-max: 19rem;
+    --cards-gap: 1rem;
+    --cards-pad: 1.5rem 1rem;
     --lore-size: 0.95rem;
+    --foto-max: 180px;
   }
 }
 
-/* Tablet vertical */
 @media (max-width: 991.98px) {
   :root {
     --book-width: 200px;
-    --card-width: 13rem;
+    --card-max: 16rem;
     --cards-gap: 0.75rem;
-    --fade-top: 60px;
-    --fade-size: 80px;
-    --side-text-size: 0.65rem;
-    --lore-size: 0.9rem;
+    --cards-pad: 1.25rem 0.75rem;
+    --lore-size: 0.88rem;
+    --foto-max: 140px;
+    --fade-size: 18%;
   }
 }
 
-/* Móvil grande */
+/* Móvil: una carta por fila (lo decide flex-wrap) */
 @media (max-width: 767.98px) {
   :root {
     --book-width: 160px;
-    --card-width: 100%;
-    --cards-gap: 0.5rem;
-    --fade-top: 45px;
-    --fade-size: 60px;
-    --side-text-size: 0.55rem;
-    --lore-size: 0.85rem;
+    --card-max: 26rem;
+    --cards-gap: 1rem;
+    --cards-pad: 1.25rem 1rem 2rem;
+    --lore-size: 0.9rem;
+    --foto-max: 130px;
+    --fade-size: 12%;
   }
 }
 
-/* Móvil pequeño */
 @media (max-width: 479.98px) {
   :root {
     --book-width: 130px;
-    --fade-top: 35px;
-    --fade-size: 45px;
-    --lore-size: 0.8rem;
+    --card-max: 100%;
+    --lore-size: 0.85rem;
+    --foto-max: 110px;
+    --rect-w: 46vw;
   }
 }
 </style>
@@ -564,13 +569,11 @@ onUnmounted(() => {
 }
 
 /* ============================================================
-   ELEMENTOS QUE CONSUMEN LAS VARIABLES
+   LIBRO
    ============================================================ */
 .book {
   width: var(--book-width);
   max-width: 100%;
-  top: 0;
-  left: 0;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -579,30 +582,8 @@ onUnmounted(() => {
   transition: 0.5s !important;
 }
 
-.card.carta-props {
-  width: var(--card-width) !important;
-  max-width: 100% !important;
-  flex: 0 0 auto;
-}
-
-.card-img-overlay {
-  gap: var(--cards-gap);
-}
-
-.txt-lore {
-  font-size: var(--lore-size);
-}
-
-.slide-content-text {
-  font-size: var(--title-size);
-}
-
-.slide-side-text {
-  font-size: var(--side-text-size);
-}
-
 /* ============================================================
-   MODAL (.desc)
+   MODAL (.desc): el scroll lo gestiona el propio modal
    ============================================================ */
 .desc {
   font-size: 1rem;
@@ -623,52 +604,213 @@ onUnmounted(() => {
     rgba(0, 0, 0, 0.5)
   );
   background-size: cover;
+
+  max-height: 100dvh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ============================================================
-   BORDE DIFUMINADO (zona marcada en rojo)
-   Empieza justo debajo de la franja negra del sigilo
-   (--fade-top) y se funde de negro a transparente (--fade-size).
+   PANEL DE CARTAS: la altura la marca el contenido
    ============================================================ */
 .bloque .card.text-bg-dark {
   position: relative;
+  width: 100%;
   overflow: hidden;
 }
 
-.bloque .card.text-bg-dark::before {
-  content: "";
+/* Imagen de fondo = fondo real, no da altura */
+.img-background {
   position: absolute;
-  top: var(--fade-top);
-  left: 0;
-  right: 0;
-  height: var(--fade-size);
-  background: linear-gradient(
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  /* BORDE DIFUMINADO (zona roja): el corte negro -> imagen se funde
+     arriba y abajo, sin capas encima */
+  -webkit-mask-image: linear-gradient(
     to bottom,
-    #000 0%,
-    rgba(0, 0, 0, 0.85) 20%,
-    rgba(0, 0, 0, 0.55) 45%,
-    rgba(0, 0, 0, 0.2) 75%,
+    transparent 0%,
+    #000 var(--fade-size),
+    #000 calc(100% - var(--fade-size)),
     transparent 100%
   );
-  z-index: 3;
-  pointer-events: none;
+          mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 var(--fade-size),
+    #000 calc(100% - var(--fade-size)),
+    transparent 100%
+  );
+}
+
+/* Contenedor de las cartas: se adapta solo, sin saltos bruscos */
+.cartas-grid {
+  position: relative !important;   /* Bootstrap lo pone absolute */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;         /* una carta suelta queda centrada */
+  align-items: flex-start;         /* ninguna carta se estira en alto */
+  gap: var(--cards-gap);
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--cards-pad);
+}
+
+/* Cada carta: mínimo 15rem, máximo --card-max */
+.card.carta-props {
+  flex: 1 1 min(15rem, 100%);
+  width: auto !important;
+  min-width: 0;
+  max-width: var(--card-max) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Texto: nunca partir palabras a mitad */
+.txt-lore {
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: auto;
+  text-align: justify;
+}
+
+/* Imagen circular de cada carta */
+.foto-top,
+.foto-top2 {
+  max-width: var(--foto-max);
+  max-height: var(--foto-max);
+  object-fit: contain;
+}
+
+/* Difuminado también en el borde superior de las imágenes de las cartas */
+.card-img-top {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
+          mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
+}
+
+.txt-lore {
+  font-size: var(--lore-size);
 }
 
 /* ============================================================
-   MÓVIL: cartas apiladas y scroll
+   TABLET (≤991.98px): libro encima, panel debajo
    ============================================================ */
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
+  /* El modal ocupa todo el ancho y apila sus hijos */
   .desc {
+    display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 100vw;
   }
 
-  .card-img-overlay {
-    flex-direction: column !important;
-    flex-wrap: nowrap !important;
+  .bloque {
+    display: flex !important;
+    flex-direction: column !important;      /* gana al !important de loreDesc.css */
+    align-items: stretch;                   /* el panel ocupa todo el ancho */
+    width: 100%;
+    max-width: 100vw;
+    min-width: 0;
+  }
+
+  .book {
+    align-self: center;
+    margin: 1rem auto;
+  }
+
+  /* El panel nunca se encoge al contenido */
+  .bloque .card.text-bg-dark {
+    width: 100%;
+    max-width: 100%;
+    min-width: min(100vw, 20rem);
+    flex: 0 0 auto;
+  }
+}
+
+/* ============================================================
+   MÓVIL (≤767.98px): slide principal
+   ============================================================ */
+@media (max-width: 767.98px) {
+  .wrapper {
+    min-height: 32rem;
+  }
+
+  .slide-rect {
+    left: var(--rect-left);
+    width: var(--rect-w);
+    height: var(--rect-h);
+    border-width: var(--rect-border);
+  }
+
+  .slide-side-text {
+    left: calc(var(--rect-left) - 2rem);
+    top: calc(50% - var(--rect-h) / 2 + var(--rect-border) / 2);
+  }
+
+  .slide-content {
+    /* left: calc(var(--rect-left) + var(--rect-w) * 0.6); */
+    right: 1rem;
+    margin-top: 3rem;
+  }
+
+  .slide-content-text {
+    font-size: var(--title-size);
+    margin-bottom: 0;
+  }
+
+  .slide-content-text > p:last-child {
+    padding-left: 1.5rem;
+  }
+
+  /* loreDesc.css lo oculta a ≤630px: se vuelve a mostrar */
+  .slide-content-cta {
+    display: block;
+    margin: 1.75rem 0 0 1.5rem;
+    padding: 0.9rem 1.6rem;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Paginación de puntos abajo */
+  .pagination-container {
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    gap: 0.75rem;
+    top: auto;
+    bottom: 1.25rem;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .pagination-item {
+    width: 24px;
+    height: 4px;
+    border-radius: 2px;
+  }
+
+  .pagination-item + .pagination-item {
+    margin-top: 0;
+  }
+
+  .pagination-item.active {
+    transform: none;
+    width: 34px;
+  }
+
+  .pagination-item.active:after {
+    display: none;
+  }
+}
+
+@media (max-width: 630px) {
+  .wrapper {
+    height: 100dvh;
   }
 }
 </style>
