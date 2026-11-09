@@ -78,7 +78,7 @@
                       <p class="txt-lore card-text">{{ slide.description }}</p>
                     </div>
                   </div>
-
+                  <!---- parrafos y cartas no usadas
                   <div class="card border-0 carta-props col carta-fondo2">
                     <img
                       :src="messmer"
@@ -99,7 +99,7 @@
                     <div class="card-body">
                       <p class="txt-lore card-text">{{ slide.parrafo3 }}</p>
                     </div>
-                  </div>
+                  </div>-->
                 </div>
               </div>
             </transition>
@@ -135,9 +135,9 @@
 
                   <div class="card border-0 carta-props col carta-fondo2">
                     <img
-                      :src="messmer"
+                      :src="miquella"
                       class="card-img-top foto-top2 animate__animated animate__fadeInDown elemento2"
-                      alt="Messmer"
+                      alt="Miquella"
                     />
                     <div class="card-body">
                       <p class="txt-lore card-text">{{ slide.personaje2Lore }}</p>
@@ -146,9 +146,9 @@
 
                   <div class="card border-0 carta-props col carta-fondo3">
                     <img
-                      :src="erdtree"
+                      :src="ansbach"
                       class="card-img-top p-0 foto-top animate__animated animate__fadeInDown elemento3"
-                      alt="Erdtree"
+                      alt="Ansbach"
                     />
                     <div class="card-body">
                       <p class="txt-lore card-text">{{ slide.personaje3Lore }}</p>
@@ -259,7 +259,7 @@ import Modal from './Modal.vue'
    ============================================================ */
 
 const assetFiles = import.meta.glob(
-  '../assets/**/*.{png,webp,jpg,jpeg,svg,gif}',
+  '../assets/**/*.{png,webp,jpg,jpeg,svg,gif,avif}',
   {
     eager: true,
     import: 'default',
@@ -307,8 +307,10 @@ const goldenOrder = getAsset('ER_Icon_Book_Golden_Order_Principia.webp')
 const marika = getAsset('marika.webp')
 const marikaFondo = getAsset('marika-fondo.webp')
 const erdtree = getAsset('erdtree.webp')
-const messmer = getAsset('messmer.png')
-const leda = getAsset('LedaFullBody.png')
+const ansbach = getAsset('ansbach.avif')
+const messmer = getAsset('messmer.webp')
+const miquella = getAsset('miquella.webp')
+const leda = getAsset('leda.avif')
 const erdtreeSigil = getAsset('ER_Spell_Sigil_Erdtree.webp')
 const enemigo1 = getAsset('enemigo1.png')
 const enemigo2 = getAsset('enemigo2.png')
@@ -329,8 +331,10 @@ checkAsset('ER_Icon_Book_Golden_Order_Principia.webp', goldenOrder)
 checkAsset('marika.webp', marika)
 checkAsset('marika-fondo.webp', marikaFondo)
 checkAsset('erdtree.webp', erdtree)
-checkAsset('messmer.png', messmer)
-checkAsset('LedaFullBody.png', leda)
+checkAsset('ansbach.avif', ansbach)
+checkAsset('messmer.webp', messmer)
+checkAsset('miquella.webp', miquella)
+checkAsset('leda.avif', leda)
 checkAsset('ER_Spell_Sigil_Erdtree.webp', erdtreeSigil)
 checkAsset('enemigo1.png', enemigo1)
 checkAsset('enemigo2.png', enemigo2)
@@ -691,12 +695,14 @@ onUnmounted(() => {
           mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
   width: 100%;
   margin-top: 40px;
+  border-radius: 0;
   
 }
 
 .txt-lore {
   font-size: var(--lore-size);
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  width: 100%;
 }
 
 /* ============================================================
