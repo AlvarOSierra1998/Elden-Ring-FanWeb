@@ -689,10 +689,14 @@ onUnmounted(() => {
 .card-img-top {
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
           mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
+  width: 100%;
+  margin-top: 40px;
+  
 }
 
 .txt-lore {
   font-size: var(--lore-size);
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 /* ============================================================
