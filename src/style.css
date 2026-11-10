@@ -1,12 +1,12 @@
 html,
 body {
-  margin: 0 ;
-  padding: 0 ;
+  margin: 0;
+  padding: 0;
   font-family: "Quicksand", sans-serif;
   font-optical-sizing: auto;
-  font-weight:lighter;
+  font-weight: lighter;
   font-style: normal;
-  overflow-x: hidden;
+  /* overflow-x: hidden;  <- quitado de aquí */
   cursor: url('./assets/'), auto;
   background-image: url('./assets/giflogo.gif');
   background-repeat: no-repeat;
@@ -14,5 +14,9 @@ body {
   background-position: center;
   background-attachment: fixed;
   background-color: black;
-  
+}
+
+/* Solo html evita el scroll horizontal: así queda una única barra */
+html {
+  overflow-x: hidden;
 }

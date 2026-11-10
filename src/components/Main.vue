@@ -307,14 +307,16 @@ const goldenOrder = getAsset('ER_Icon_Book_Golden_Order_Principia.webp')
 const marika = getAsset('marika.webp')
 const marikaFondo = getAsset('marika-fondo.webp')
 const erdtree = getAsset('erdtree.webp')
+/* Personajes */
 const ansbach = getAsset('ansbach.avif')
 const messmer = getAsset('messmer.webp')
 const miquella = getAsset('miquella.webp')
 const leda = getAsset('leda.avif')
-const erdtreeSigil = getAsset('ER_Spell_Sigil_Erdtree.webp')
-const enemigo1 = getAsset('enemigo1.png')
-const enemigo2 = getAsset('enemigo2.png')
-const enemigo3 = getAsset('enemigo3.png')
+const erdtreeSigil = getAsset('icono-arbol.png')
+/**ENEMIGOS */
+const enemigo1 = getAsset('messmer.jpg')
+const enemigo2 = getAsset('bdf2.png')
+const enemigo3 = getAsset('rellana.webp')
 const wallpaper = getAsset('wallpaper.jpeg')
 
 /* ============================================================
@@ -335,10 +337,10 @@ checkAsset('ansbach.avif', ansbach)
 checkAsset('messmer.webp', messmer)
 checkAsset('miquella.webp', miquella)
 checkAsset('leda.avif', leda)
-checkAsset('ER_Spell_Sigil_Erdtree.webp', erdtreeSigil)
-checkAsset('enemigo1.png', enemigo1)
-checkAsset('enemigo2.png', enemigo2)
-checkAsset('enemigo3.png', enemigo3)
+checkAsset('icono-arbol.png', erdtreeSigil)
+checkAsset('messmer.jpg', enemigo1)
+checkAsset('bdf2.png', enemigo2)
+checkAsset('rellana.webp', enemigo3)
 checkAsset('wallpaper.jpeg', wallpaper)
 
 /* ============================================================
@@ -703,6 +705,7 @@ onUnmounted(() => {
   font-size: var(--lore-size);
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   width: 100%;
+  text-align: center;
 }
 
 /* ============================================================

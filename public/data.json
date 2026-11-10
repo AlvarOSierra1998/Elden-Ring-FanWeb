@@ -29,8 +29,8 @@
     "sublineSecondLine": "Enemigos y Jefes",
     "bgImg": "fondo-enemigos.jpg",
     "rectImg": "https://i.postimg.cc/3JFLGMRF/slide-rect2.jpg",
-    "enemigo1": "",
-    "enemigo2": "",
-    "enemigo3": ""
+    "enemigo1": "Messmer",
+    "enemigo2": "Bestia Divina ",
+    "enemigo3": "Rellana"
   }
 ]
