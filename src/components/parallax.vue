@@ -42,6 +42,14 @@ function handleScroll() {
 
     }
 
+    /**TXT MOVIL TITULO** */
+@media (max-width: 767.98px) {
+    .parallax div {
+        padding: 0rem;
+    }
+    
+}
+
     .parallax img {
         transition: transform 0.5s;
         display: flex;
