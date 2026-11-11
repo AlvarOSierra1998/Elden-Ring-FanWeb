@@ -73,6 +73,7 @@
                   v-if="mostrardesc"
                   class="card text-bg-dark container-fluid text-center p-0 m-0"
                 >
+                  
                   <img :src="marika" class="card-img img-background" alt="Marika" />
 
                   <div class="card-img-overlay cartas-grid">
@@ -127,41 +128,45 @@
                   v-if="mostrarPersonajes"
                   class="card text-bg-dark container-fluid text-center p-0 m-0"
                 >
-                  <img :src="marikaFondo" class="card-img img-background" alt="Marika" />
+                <!---fondo carta-->
+                  <figure>
+                    <img :src="marikaFondo" class="card-img img-background" alt="Marika" />
+                  </figure>
 
+                  <!---LEDA-->
                   <div class="card-img-overlay cartas-grid">
-                    <div class="card border-0 carta-props col carta-fondo1">
+                    <figure class="card border-0 carta-props col carta-fondo1">
                       <img
                         :src="leda"
                         class="card-img-top p-0 foto-top animate__animated animate__fadeInDown elemento1"
                         alt="Leda"
                       />
-                      <div class="card-body">
+                      <figcaption class="card-body">
                         <p class="txt-lore card-text">{{ slide.personaje1Lore }}</p>
-                      </div>
-                    </div>
+                      </figcaption>
+                    </figure>
 
-                    <div class="card border-0 carta-props col carta-fondo2">
+                    <figure class="card border-0 carta-props col carta-fondo2">
                       <img
                         :src="miquella"
                         class="card-img-top foto-top2 animate__animated animate__fadeInDown elemento2"
                         alt="Miquella"
                       />
-                      <div class="card-body">
+                      <figcaption class="card-body">
                         <p class="txt-lore card-text">{{ slide.personaje2Lore }}</p>
-                      </div>
-                    </div>
+                      </figcaption>
+                    </figure>
 
-                    <div class="card border-0 carta-props col carta-fondo3">
+                    <figure class="card border-0 carta-props col carta-fondo3">
                       <img
                         :src="ansbach"
                         class="card-img-top p-0 foto-top animate__animated animate__fadeInDown elemento3"
                         alt="Ansbach"
                       />
-                      <div class="card-body">
+                      <figcaption class="card-body">
                         <p class="txt-lore card-text">{{ slide.personaje3Lore }}</p>
-                      </div>
-                    </div>
+                      </figcaption>
+                    </figure>
                   </div>
                 </div>
               </transition>
@@ -169,53 +174,69 @@
 
             <!-- SLIDE 2 - ENEMIGOS -->
             <div v-else-if="currentSlide === 2" class="bloque">
-              <img
+              
+            
+                <img
                 :src="goldenOrder"
                 class="book animate__animated animate__fadeInLeft"
                 alt="Golden Order Principia"
                 @click="toggleEnemigos"
               />
+          
+              
 
               <transition name="fade">
+                <!---ENEMIGOS-->
                 <div
                   v-if="mostrarEnemigos"
                   class="card text-bg-dark container-fluid text-center p-0 m-0"
                 >
+              
                   <img :src="marika" class="card-img img-background" alt="Marika" />
-
+                
                   <div class="card-img-overlay cartas-grid">
-                    <div class="card border-0 carta-props col carta-fondo1">
-                      <img
+                    
+                    <!----ENEMIGO1-->
+                      <figure class="card border-0 carta-props col carta-fondo1">
+                          <img
                         :src="enemigo1"
                         class="card-img-top p-0 foto-top animate__animated animate__fadeInDown elemento1"
                         alt="Enemigo 1"
                       />
-                      <div class="card-body">
-                        <p class="txt-lore card-text">{{ slide.enemigo1 }}</p>
-                      </div>
-                    </div>
+                      <figcaption class="card-body txt-lore card-text">
+                          {{ slide.enemigo1 }}
+                      </figcaption>
+                    
+                    </figure>
+                    
 
-                    <div class="card border-0 carta-props col carta-fondo2">
-                      <img
+                    <!----ENEMIGO2-->
+                      <figure class="card border-0 carta-props col carta-fondo1">
+                          <img
                         :src="enemigo2"
-                        class="card-img-top foto-top2 animate__animated animate__fadeInDown elemento2"
+                        class="card-img-top p-0 foto-top animate__animated animate__fadeInDown elemento1"
                         alt="Enemigo 2"
                       />
-                      <div class="card-body">
-                        <p class="txt-lore card-text">{{ slide.enemigo2 }}</p>
-                      </div>
-                    </div>
+                      <figcaption class="card-body txt-lore card-text">
+                          {{ slide.enemigo2 }}
+                      </figcaption>
+                    
+                    </figure>
+                    
 
-                    <div class="card border-0 carta-props col carta-fondo3">
-                      <img
+                  <!----ENEMIGO3-->
+                      <figure class="card border-0 carta-props col carta-fondo1">
+                          <img
                         :src="enemigo3"
-                        class="card-img-top p-0 foto-top animate__animated animate__fadeInDown elemento3"
+                        class="card-img-top p-0 foto-top animate__animated animate__fadeInDown elemento1"
                         alt="Enemigo 3"
                       />
-                      <div class="card-body">
-                        <p class="txt-lore card-text">{{ slide.enemigo3 }}</p>
-                      </div>
-                    </div>
+                      <figcaption class="card-body txt-lore card-text">
+                          {{ slide.enemigo3 }}
+                      </figcaption>
+                    
+                    </figure>
+                    
                   </div>
                 </div>
               </transition>
