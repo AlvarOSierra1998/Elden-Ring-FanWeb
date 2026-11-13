@@ -113,7 +113,7 @@
               </transition>
             </div>
 
-            <!-- SLIDE 1 - PERSONAJES -->
+            <!-- SLIDE 1 - PERSONAJES (mismo estilo que Enemigos: galería; mismas imágenes y textos de siempre) -->
             <div v-else-if="currentSlide === 1" class="bloque">
               <img
                 :src="goldenOrder"
@@ -130,44 +130,19 @@
                   <img :src="marikaFondo" class="card-img img-background" alt="Marika" />
 
                   <div class="card-img-overlay cartas-grid">
-                    <div class="card border-0 carta-props col carta-fondo1">
-                      <img
-                        :src="leda"
-                        class="card-img-top p-0 foto-top animate__animated animate__fadeInDown elemento1"
-                        alt="Leda"
-                      />
-                      <div class="card-body">
-                        <p class="txt-lore card-text">{{ slide.personaje1Lore }}</p>
-                      </div>
-                    </div>
-
-                    <div class="card border-0 carta-props col carta-fondo2">
-                      <img
-                        :src="miquella"
-                        class="card-img-top foto-top2 animate__animated animate__fadeInDown elemento2"
-                        alt="Miquella"
-                      />
-                      <div class="card-body">
-                        <p class="txt-lore card-text">{{ slide.personaje2Lore }}</p>
-                      </div>
-                    </div>
-
-                    <div class="card border-0 carta-props col carta-fondo3">
-                      <img
-                        :src="ansbach"
-                        class="card-img-top p-0 foto-top animate__animated animate__fadeInDown elemento3"
-                        alt="Ansbach"
-                      />
-                      <div class="card-body">
-                        <p class="txt-lore card-text">{{ slide.personaje3Lore }}</p>
-                      </div>
-                    </div>
+                    <Galeria
+                      :items="[
+                        { img: leda, alt: 'Leda', text: slide.personaje1Lore },
+                        { img: miquella, alt: 'Miquella', text: slide.personaje2Lore },
+                        { img: ansbach, alt: 'Ansbach', text: slide.personaje3Lore }
+                      ]"
+                    />
                   </div>
                 </div>
               </transition>
             </div>
 
-            <!-- SLIDE 2 - ENEMIGOS -->
+            <!-- SLIDE 2 - ENEMIGOS (GALERÍA) -->
             <div v-else-if="currentSlide === 2" class="bloque">
               <img
                 :src="goldenOrder"
@@ -184,38 +159,13 @@
                   <img :src="marika" class="card-img img-background" alt="Marika" />
 
                   <div class="card-img-overlay cartas-grid">
-                    <div class="card border-0 carta-props col carta-fondo1">
-                      <img
-                        :src="enemigo1"
-                        class="card-img-top p-0 foto-top animate__animated animate__fadeInDown elemento1"
-                        alt="Enemigo 1"
-                      />
-                      <div class="card-body">
-                        <p class="txt-lore card-text">{{ slide.enemigo1 }}</p>
-                      </div>
-                    </div>
-
-                    <div class="card border-0 carta-props col carta-fondo2">
-                      <img
-                        :src="enemigo2"
-                        class="card-img-top foto-top2 animate__animated animate__fadeInDown elemento2"
-                        alt="Enemigo 2"
-                      />
-                      <div class="card-body">
-                        <p class="txt-lore card-text">{{ slide.enemigo2 }}</p>
-                      </div>
-                    </div>
-
-                    <div class="card border-0 carta-props col carta-fondo3">
-                      <img
-                        :src="enemigo3"
-                        class="card-img-top p-0 foto-top animate__animated animate__fadeInDown elemento3"
-                        alt="Enemigo 3"
-                      />
-                      <div class="card-body">
-                        <p class="txt-lore card-text">{{ slide.enemigo3 }}</p>
-                      </div>
-                    </div>
+                    <Galeria
+                      :items="[
+                        { img: enemigo1, alt: 'Enemigo 1', text: slide.enemigo1 },
+                        { img: enemigo2, alt: 'Enemigo 2', text: slide.enemigo2 },
+                        { img: enemigo3, alt: 'Enemigo 3', text: slide.enemigo3 }
+                      ]"
+                    />
                   </div>
                 </div>
               </transition>
@@ -262,6 +212,7 @@
 <script setup>
 import { ref, watch, onMounted, onUnmounted } from 'vue'
 import Modal from './Modal.vue'
+import Galeria from './Galeria.vue'
 
 /* ============================================================
    ASSETS
@@ -670,7 +621,7 @@ onUnmounted(() => {
   );
 }
 
-/* Contenedor de las cartas: se adapta solo, sin saltos bruscos */
+/* Contenedor de las cartas / galería: se adapta solo, sin saltos bruscos */
 .cartas-grid {
   position: relative !important;   /* Bootstrap lo pone absolute */
   display: flex;
